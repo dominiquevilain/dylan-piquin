@@ -222,4 +222,14 @@ body {
     #calendar .fc-daygrid-day-number {
         @apply text-sm;
     }
+
+
+}
+
+.player_circle {
+    height: 50px;
+    width: 50px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
 }

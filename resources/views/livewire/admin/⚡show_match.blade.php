@@ -17,7 +17,11 @@ new class extends Component {
 
     public int $newValue = 16;
 
+    public string $match_composition = "4-4-2";
+
+
     public function mount($id): void
+
     {
         $this->games = Game::findOrFail($id);
     }
@@ -243,7 +247,30 @@ new class extends Component {
 
             @endforeach
 
+            @php
 
+                @endphp
+
+            <select wire:model="match_composition" class="bg-white">
+                @foreach(config('player_compositions') as $formationName=> $composition)
+
+                    <option value="{{$formationName}}">{{$formationName}}</option>
+                @endforeach
+
+            </select>
+
+            <div
+                class="relative w-full h-[600px] rounded-xl overflow-hidden bg-cover bg-center"
+                {{--style="background-image: url('{{ asset('football-field-soccer-field-background-green-lawn-court-create-game_64749-2031.avif') }}');"--}}>
+                <span class="text-white">
+                    @foreach(config('player_compositions.' . $this->match_composition) as $player)
+                        <x-player_position
+                            x="{{ $player['x'] }}"
+                            y="{{ $player['y'] }}"
+                            poste="{{ $player['poste'] }}"
+                        />
+                @endforeach
+            </div>
         </div>
     </div>
 </div>
