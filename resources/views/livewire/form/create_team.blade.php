@@ -115,7 +115,7 @@ new class extends Component {
             </x-form.textarea>
 --}}
             <button type="submit"
-                    class="w-full text-white py-3 rounded-xl font-semibold bg-gradient-to-r from-purple-500 to-indigo-500 hover:scale-[1.02] transition duration-200 shadow-lg shadow-purple-500/30">
+                    class="w-full text-white btn-primary">
                 Créer mon équipe
             </button>
 
