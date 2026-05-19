@@ -1477,9 +1477,9 @@
     >
         <nav class="h-full flex flex-col items-center justify-center">
             <ul class="flex flex-col gap-6 text-2xl font-semibold">
-                <li><a href="">Accueil</a></li>
-                <li><a href="">Match</a></li>
-                <li><a href="/inscription">Entrainement</a></li>
+                <li><a href="/dashboard">Accueil</a></li>
+                <li><a href="/match">Match</a></li>
+                <li><a href="/train">Entrainement</a></li>
                 <li><a href="/team">Equipe</a></li>
                 <li><a href="/calendrier">Calendrier</a></li>
             </ul>

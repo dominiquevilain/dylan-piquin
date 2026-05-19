@@ -67,22 +67,22 @@ new class extends Component {
     <div class="lg:flex lg:gap-8 lg:justify-center lg:pb-8">
         <div class="flex flex-row justify-center items-center gap-5 lg:gap-12 pt-6 sm:flex-row">
            <span
-               class="filter_position {{ $this->filters === 'tout' ? 'active' : '' }}"
-               wire:click="filter('tout')">Tout</span>
+                   class="filter_position {{ $this->filters === 'tout' ? 'active' : '' }}"
+                   wire:click="filter('tout')">Tout</span>
             <span
-                class="filter_position {{ $this->filters === 'attaquant' ? 'active' : '' }}"
-                wire:click="filter('attaquant')">Attaquant</span>
+                    class="filter_position {{ $this->filters === 'attaquant' ? 'active' : '' }}"
+                    wire:click="filter('attaquant')">Attaquant</span>
             <span
-                class="filter_position {{ $this->filters === 'milieux' ? 'active' : '' }}"
-                wire:click="filter('milieux')">Milieux</span>
+                    class="filter_position {{ $this->filters === 'milieux' ? 'active' : '' }}"
+                    wire:click="filter('milieux')">Milieux</span>
         </div>
         <div class="flex flex-row justify-center items-center pt-6 pb-6 gap-5 lg:pb-0 lg:gap-12">
 <span
-    class="filter_position {{ $this->filters === 'defenseur' ? 'active' : '' }}"
-    wire:click="filter('defenseur')">Défenseur</span>
+        class="filter_position {{ $this->filters === 'defenseur' ? 'active' : '' }}"
+        wire:click="filter('defenseur')">Défenseur</span>
             <span
-                class="filter_position {{ $this->filters === 'gardien' ? 'active' : '' }}"
-                wire:click="filter('gardien')">Gardien</span>
+                    class="filter_position {{ $this->filters === 'gardien' ? 'active' : '' }}"
+                    wire:click="filter('gardien')">Gardien</span>
         </div>
     </div>
 
@@ -103,7 +103,10 @@ new class extends Component {
                      src="{{ asset('Component_card_player.svg') }}"
                      alt="">
 
-                <span
+
+                @if(isset($player->pivot->status))
+
+                    <span
                     @class([
                         'px-4 py-1 rounded-full text-sm font-bold uppercase tracking-wide border',
                         'bg-green-500/20 text-green-400 border-green-500/40' => $player->pivot->status === 'present',
@@ -113,6 +116,7 @@ new class extends Component {
                 >
                     {{ $player->pivot->status }}
                 </span>
+                @endif
             </div>
         @endforeach
 

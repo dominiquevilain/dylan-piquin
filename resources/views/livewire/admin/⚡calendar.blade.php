@@ -26,6 +26,11 @@ new class extends Component {
 ?>
 
 <div>
+    <div class="flex gap-4 justify-center">
+        <livewire:admin.create_event></livewire:admin.create_event>
+        <livewire:admin.create_train></livewire:admin.create_train>
+    </div>
+
     <x-calendar-test></x-calendar-test>
     @foreach($trains as $train)
 

@@ -20,8 +20,6 @@ new class extends Component {
     public string $match_composition = "4-4-2";
 
 
-
-
     public function mount($id): void
 
     {
@@ -185,7 +183,7 @@ new class extends Component {
                        group-hover:drop-shadow-[0_0_25px_rgba(255,255,255,0.25)]"
                         >
                 <span class="text-white absolute font-bold text-xl left-8 top-8 z-10">
-                    {{ $player->id }}
+                    {{ $player->firstName }}
                 </span>
 
                             <div
@@ -297,7 +295,9 @@ new class extends Component {
                                     <li
                                         x-show="selectedPlayer?.poste === '{{ $player->position }}'"
                                         x-cloak>
-                                        {{ $player->firstName }}
+                                        @if($player->pivot->status === "present")
+                                            {{ $player->firstName }}
+                                        @endif
                                     </li>
                                 @endforeach
                             </ul>

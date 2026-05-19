@@ -88,7 +88,7 @@ Route::middleware('auth')->group(function () {
     });
     Route::get('/match/{id}', function ($id) {
         if (Auth::user()->player) {
-            return redirect('/match');
+            return redirect('/matchF');
         }
 
         return view('admin.show_match', [

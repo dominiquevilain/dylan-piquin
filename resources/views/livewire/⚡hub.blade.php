@@ -88,19 +88,18 @@ new class extends Component {
 
                     <div class="flex flex-col sm:flex-row gap-4">
                         <a
-                            href="/join-team"
+                            href="/profile"
                             class="px-6 py-3 rounded-xl border border-white/20
                                    text-white font-semibold hover:bg-white/5 transition">
                             Rejoindre une équipe
                         </a>
 
                         <a
-                            href="/create-team"
+                            href="/create"
                             class="px-6 py-3 rounded-xl bg-gradient-to-r
                                    from-blue-600 to-blue-500
                                    text-white font-semibold
-                                   hover:scale-[1.02] transition"
-                        >
+                                   hover:scale-[1.02] transition">
                             Créer une équipe
                         </a>
                     </div>

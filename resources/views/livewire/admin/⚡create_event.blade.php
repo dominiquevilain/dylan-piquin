@@ -133,7 +133,7 @@ new class extends Component {
                 </div>
 
 
-                <x-form.button text="Création du match" type="submit">Créer match</x-form.button>
+                <x-form.button class="btn-primary" text="Création du match" type="submit">Créer match</x-form.button>
 
             </form>
         </x-layout_forms>
