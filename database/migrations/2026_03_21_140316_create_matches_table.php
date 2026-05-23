@@ -21,6 +21,8 @@ return new class extends Migration {
             $table->string('name_away');
             $table->string('photo_home')->nullable();
             $table->string('photo_away')->nullable();
+            $table->integer('score_home')->nullable();
+            $table->integer('score_away')->nullable();
 
             $table->timestamps();
         });
