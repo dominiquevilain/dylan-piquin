@@ -29,7 +29,7 @@ new class extends Component {
 
         if ($type === 'train') {
             $train = Train::findOrFail($id);
-                DatabaseNotification::find($notificationId)->markAsRead();
+            DatabaseNotification::find($notificationId)->markAsRead();
 
             $train->players()->updateExistingPivot($playerId, [
                 'status' => $string,

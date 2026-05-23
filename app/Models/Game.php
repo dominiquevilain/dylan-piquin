@@ -23,6 +23,8 @@ class Game extends Model
         'name_away',
         'photo_home',
         'photo_away',
+        'score_home',
+        'score_away'
     ];
 
     // ️ un  match appartient à une équipe
