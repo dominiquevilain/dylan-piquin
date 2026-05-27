@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Models\Game;
 use App\Models\Train;
+use Illuminate\Support\Facades\Auth;
+
 
 Route::get('/', function () {
     return view('client.accueil');
@@ -19,13 +21,23 @@ Route::get('/logout', function () {
 })->name('hub');
 
 
-use Illuminate\Support\Facades\Auth;
 
 Route::get('/calendar/events', function () {
 
-    $user = Auth::id();
+    $current_user = Auth::user();
 
-    $games = Game::where('user_id', $user)->get()->map(function ($game) {
+    if ($current_user->player) {
+
+        $teamId = \App\Models\Player::where('user_id', $current_user->id)
+            ->value('team_id');
+
+    } else {
+
+        $teamId = \App\Models\Team::where('user_id', $current_user->id)
+            ->value('id');
+    }
+
+    $games = Game::where('team_id', $teamId)->get()->map(function ($game) {
         return [
             'title' => '⚽ Match',
             'start' => $game->date_match,
@@ -36,7 +48,7 @@ Route::get('/calendar/events', function () {
         ];
     });
 
-    $trains = Train::where('user_id', $user)->get()->map(function ($train) {
+    $trains = Train::where('team_id', $teamId)->get()->map(function ($train) {
         return [
             'title' => '🏃 Entraînement',
             'start' => $train->date_train,

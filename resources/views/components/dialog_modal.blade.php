@@ -81,16 +81,14 @@
                             <span x-text="selectedEvent.type"></span>
                         </li>
                     </ul>
-                    <a
-                        :href="
-        selectedEvent.title === '⚽ Match'
-            ? `/match/${selectedEvent.id}`
-            : `/train/${selectedEvent.id}`
-    "
-                        class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white font-medium transition"
-                    >
-                        Voir
-                    </a>
+                    @unless(Auth::user()->player)
+
+                        <a
+                            :href="selectedEvent.title === '⚽ Match' ? `/match/${selectedEvent.id}` : `/train/${selectedEvent.id}`"
+                            class="inline-flex items-center justify-center px-6 py-3 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white font-medium transition">
+                            Voir
+                        </a>
+                    @endunless
                 </div>
 
                 {{--  <div class="flex items-center justify-center">
