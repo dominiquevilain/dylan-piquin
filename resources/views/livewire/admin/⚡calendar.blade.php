@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Game;
 use App\Models\Player;
 use App\Models\Team;
 use App\Models\Train;
@@ -7,6 +8,8 @@ use Livewire\Component;
 
 new class extends Component {
     public \Illuminate\Support\Collection $trains;
+
+    public \Illuminate\Support\Collection $game;
 
     public function mount(): void
     {
@@ -22,6 +25,24 @@ new class extends Component {
             $this->trains = Train::where('team_id', $team)->orderby('date_train', 'asc')->get();
         }
     }
+
+    public function deleteEvent($id, $type): void
+    {
+        if ($type === '') {
+            Train::where('id', $id)->delete();
+            Game::where('id', $id)->delete();
+
+        }
+
+        $this->dispatch('event-deleted', id: $id);
+    }
+
+    public function updateEvent()
+    {
+        Train::where('id', $id)->update();
+        Game::where('id', $id)->update();
+
+    }
 };
 ?>
 
@@ -30,11 +51,9 @@ new class extends Component {
         <livewire:admin.create_event></livewire:admin.create_event>
         <livewire:admin.create_train></livewire:admin.create_train>
     </div>
-
-    <x-calendar-test></x-calendar-test>
-    @foreach($trains as $train)
-
-        <x-dialog_modal link="train/{{{$train->id}}}"></x-dialog_modal>
-    @endforeach
+    <div wire:ignore>
+        <x-calendar-test></x-calendar-test>
+    </div>
+    <x-dialog_modal></x-dialog_modal>
 
 </div>
